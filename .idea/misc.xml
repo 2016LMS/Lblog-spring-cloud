@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Lblog-spring-cloud-dependencies/pom.xml" />
+        <option value="$PROJECT_DIR$/Lblog-spring-cloud-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/Lblog-spring-cloud-service-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/Lblog-spring-cloud-web-admin-feign/pom.xml" />
+        <option value="$PROJECT_DIR$/Lblog-spring-cloud-common/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="true" project-jdk-name="9 (2)" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

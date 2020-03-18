@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Lblog-spring-cloud-service-admin
+
+server:
+  port: 8762
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ #通过这个url找到服务端eureka server的地址，然后注册到eureka服务器

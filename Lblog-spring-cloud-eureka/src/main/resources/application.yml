@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: Lblog-spring-cloud-eureka
+
+server:
+  port: 8761
+
+#eureka:
+#  instance:
+#  hostname: localhost
+#  client:
+#  register-with-eureka: false #禁止自己当做服务注册
+#  fetch-registry: false #屏蔽注册信息
+#  serverUrl:
+#  defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false  #禁止自己当做服务注册
+    fetchRegistry: false  #屏蔽注册信息,通过这两项指明自己是一个eureka server
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

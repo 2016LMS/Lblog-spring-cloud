@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Lblog-spring-cloud.iml" filepath="$PROJECT_DIR$/Lblog-spring-cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lblog-spring-cloud-common/Lblog-spring-cloud-common.iml" filepath="$PROJECT_DIR$/Lblog-spring-cloud-common/Lblog-spring-cloud-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lblog-spring-cloud-dependencies/Lblog-spring-cloud-dependencies.iml" filepath="$PROJECT_DIR$/Lblog-spring-cloud-dependencies/Lblog-spring-cloud-dependencies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lblog-spring-cloud-service-admin/Lblog-spring-cloud-service-admin.iml" filepath="$PROJECT_DIR$/Lblog-spring-cloud-service-admin/Lblog-spring-cloud-service-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lblog-spring-cloud-web-admin-feign/Lblog-spring-cloud-web-admin-feign.iml" filepath="$PROJECT_DIR$/Lblog-spring-cloud-web-admin-feign/Lblog-spring-cloud-web-admin-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lblog-spring-cloud-eureka/hello-spring-cloud-eureka.iml" filepath="$PROJECT_DIR$/Lblog-spring-cloud-eureka/hello-spring-cloud-eureka.iml" />
+    </modules>
+  </component>
+</project>
