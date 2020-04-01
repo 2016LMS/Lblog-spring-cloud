@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",install-scale="1.0">
+    <title>关于我</title>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">-->
+    <link type="text/css" rel="stylesheet" href="../static/css/semantic.min.css" th:href="@{/css/semantic.min.css}">
+    <link type="text/css" rel="stylesheet" href="../static/css/me.css " th:href="@{/css/me.css}">
+    <link type="text/css" rel="stylesheet" href="../static/css/icon.min.css" th:href="@{/css/icon.min.css}">
+</head>
+<body class="body-color">
+    <!--导航栏-->
+    <nav class="ui inverted attached segment m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu m-padded-tb-mini">
+                <h2 class="ui teal header">Blog</h2>
+                <a href="#"class="m-item item m-mobile-hide"><img src="../static/images/Home.svg" style="display:block;width: 20px" th:src="@{/images/Home.svg}"/>首页</a>
+                <a href="#"class="m-item item m-mobile-hide"><img src="../static/images/classify.svg" style="display:block;width: 20px" th:src="@{/images/classify.svg}"/></i>分类</a>
+                <a href="#"class="m-item item m-mobile-hide"><img src="../static/images/tag3.svg" style="display:block;width: 20px" th:src="@{/images/tag3.svg}"/>标签</a>
+                <a href="#"class="m-item item m-mobile-hide"><img src="../static/images/归档.svg" style="display:block;width: 20px" th:src="@{/images/归档.svg}"/>归档</a>
+                <a href="#"class="m-item active item m-mobile-hide"><img src="../static/images/head.svg" style="display:block;width: 20px" th:src="@{/images/head.svg}"/>作者信息</a>
+                <a href="https://github.com/2016LMS/Lblog" target="_blank" class="m-item item m-mobile-hide"><img src="../static/images/github.svg" style="display:block;width: 20px" th:src="@{/images/github.svg}">源码</a>
+                <div class="right item">
+                    <div class="ui input">
+                        <input type="text" placeholder="Search">
+                        <img src="../static/images/search2.svg" style="display:block;width: 25px" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black button m-right-top m-mobile-show"><img src="../static/images/tealMenu.svg" style="display:block;width: 25px" th:src="@{/images/tealMenu.svg}"/></a>
+    </nav>
+    <!--end of navigation -->
+    <!--中间内容-->
+    <div class="m-padded-tb-big">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!--左边博客列表-->
+                <div class="eleven wide column">
+                    <!--content-->
+                    <div class="ui attached segment">
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我叫林茂胜，是四川省成都大学信息科学与工程学院的一名学生，主修的
+                            专业是软件工程， 我主要学习Java语言,在写这段话的时候正值我大三
+                            的暑假，也就是2019年8月20日，现在正在找工作，也面试过几次了，但一直没找到合适的工作，
+                            但我会继续努力，提高自己，找到好的工作，并且把我的面试经验分享给你们。</p>
+                        <img src="../static/images/p2.jpg" alt="image" class="ui rounded fluid image" th:src="@{/images/p2.jpg}">
+                    </div>
+
+                </div>
+                <!--end of 左边博客列表-->
+                <!--右边的top （小卡片之类的，分类，标签方块，小贴士）-->
+                <div class="five wide column">
+
+                    <!--分类模块-->
+                    <div class="ui segments">
+                        <!--分类头部-->
+                        <div class="ui secondary segment">
+                            <div class="ui two column grid">
+                                <div class="column">
+                                    about me
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--分类内容部-->
+                        <div class="ui teal segment">
+                            <div class="ui fluid vertical menu">
+                                <a href="https://www.github.com/2016LMS"target="_blank" class="item">Gayhub:<p style="color: orange">www.github.com/2016LMS</p></a>
+                                <div class="item"><p>微博：codingRoad</p></div>
+                                <div class="item"><p>QQ:2970579924</p></div>
+                                <div class="item"><p>邮箱：linmaosheng66@163.com</p></div>
+                                <div class="item">微信：如下图</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--二维码-->
+                    <h4 class="ui horizontal orange divider header">扫码加个好友？</h4>
+                    <div class="ui centered card" style="width: 11em">
+                        <img src="../static/images/WeChat.jpg" alt="WeChat" class="ui rounded image" th:src="@{/images/WeChat.jpg}">
+                    </div>
+                </div>
+                <!--end of 右边top-->
+            </div>
+        </div>
+    </div>
+
+    <!--底部footor-->
+    <footer class="ui inverted vertical segment m-padded-tb">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <div class="ui inverted link list">
+                        <div class="item">
+                            <img src="../static/images/selfies.jpg" class="ui rounded image" alt="wechat二维码" style="width: 110px" th:src="@{/images/selfies.jpg}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="three wide column">
+                    <h4 class="ui inverted header">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">用户故事</a>
+                        <a href="#" class="item">aiyo</a>
+                        <a href="#" class="item">Linsanity</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">用户故事</a>
+                        <a href="#" class="item">aiyo</a>
+                        <a href="#" class="item">Linsanity</a>
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header">经典格言</h4>
+                    <p>一个人最大的敌人就是自己！</p>
+                </div>
+            </div>
+            <br>
+            <div class="ui inverted secondary divider">
+            </div>
+            <p class="m-text-thin m-text-spaced m-opacity-mini">copyright 2016-2020 @linsanity</p>
+        </div>
+
+
+    </footer>
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/semantic-ui/2.4.2/semantic.min.js"></script>-->
+<script src="../static/js/semantic.min.js" th:src="@{/js/semantic.min.js}"></script>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide')
+    });
+
+</script>
+</body>
+</html>

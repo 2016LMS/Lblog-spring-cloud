@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",install-scale="1.0">
+    <title>博客详情页</title>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">-->
+    <link rel="stylesheet" href="../static/css/semantic.min.css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" href="../static/css/typo.css"th:href="@{/css/typo.css}">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css"th:href="@{/lib/prism/prism.css}">
+    <link rel="stylesheet" href="../static/css/icon.min.css"th:href="@{/css/icon.min.css}">
+    <link rel="stylesheet" href="../static/css/animate.css"th:href="@{/css/animate.css}">
+    <link rel="stylesheet" href="../static/css/me.css "th:href="@{/css/me.css}">
+</head>
+<body class="body-color">
+<!--导航栏-->
+<nav class="ui inverted attached segment">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu m-padded-tb-mini">
+            <h2 class="ui teal header">Blog</h2>
+            <a href="#" th:href="@{/}" class="m-item item m-mobile-hide"><img src="../static/images/Home.svg" style="display:block;width: 20px" th:src="@{/images/Home.svg}"/>首页</a>
+            <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide"><img src="../static/images/classify.svg" style="display:block;width: 20px" th:src="@{/images/classify.svg}"/></i>分类</a>
+            <a href="#" th:href="@{/tags/-1}" class="m-item item m-mobile-hide"><img src="../static/images/tag3.svg" style="display:block;width: 20px" th:src="@{/images/tag3.svg}"/>标签</a>
+            <a href="#" th:href="@{/archives}" class="m-item item m-mobile-hide"><img src="../static/images/归档.svg" style="display:block;width: 20px"th:src="@{/images/归档.svg}" />归档</a>
+            <a href="#"class="m-item item m-mobile-hide"><img src="../static/images/head.svg" style="display:block;width: 20px" th:src="@{/images/Head.svg}"/>作者信息</a>
+            <a href="https://github.com/2016LMS/Lblog" target="_blank" class="m-item item m-mobile-hide"><img src="../static/images/github.svg" style="display:block;width: 20px" th:src="@{/images/github.svg}">源码</a>
+            <div class="right item">
+                <div class="ui input">
+                    <input type="text" placeholder="Search">
+                    <img src="../static/images/search2.svg" th:src="@{/images/search2.svg}" style="display:block;width: 30px;height: 30px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black button m-right-top m-mobile-show"><img src="../static/images/tealMenu.svg" style="display:block;width: 25px" th:src="@{/images/tealMenu.svg}"/></a>
+</nav>
+<!--end of navigation-->
+
+    <!--中间内容-->
+    <div class="m-container-small m-padded-tb-big animated swing">
+        <div class="ui container">
+            <div class="ui top attached segment">
+                <div class="ui horizontal link list">
+                    <div class="item">
+                        <img src="../static/images/p2.jpg" class="ui avatar image" style="height: 40px;width: 40px"  th:src="@{'/images/avatars/'+${blog.user.avatar}}">
+                        <div class="content"><a href="#" class="header" th:text="${blog.user.nickname}">linsanity</a></div>
+                    </div>
+                    <div class="item">
+                        更新于： <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2019-8-17</span>
+                    </div>
+                    <div class="item">
+                        浏览量：<span th:text="${blog.views}">2324</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui attached segment">
+                <!--图片区域-->
+                <img src="../static/images/p2.jpg" alt="image" class="ui fluid rounded image" th:src="@{${blog.firstPicture}}">
+            </div>
+            <!--内容区域-->
+            <div class="ui attached padded segment">
+                <div class="ui right aligned basic segment">
+                    <div class="ui orange label">
+                        <span th:text="${blog.flag}">原创</span>
+                    </div>
+                </div>
+                <h2 class="ui centered header" th:text="${blog.title}">关于人生的话</h2>
+                <div id="content" class="typo typo-selection m-padded-lr-responsive m-padded-tb" th:utext="${blog.content}">
+                    <h2 id="section2">二、排版实例：</h2>
+                    <pre><code class="language-css">public static final int =66
+h1,h2,h3,h4,h5,h6 {
+    line-height:1;font-family:Arial,sans-serif;margin:1.4em 0 0.8em;
+}
+h1{font-size:1.8em;}
+h2{font-size:1.6em;}
+h3{font-size:1.4em;}
+h4{font-size:1.2em;}
+h5,h6{font-size:1em;}
+                    </code></pre>
+                    <p>提供2个排版实例，第一个中文实例来自于来自于<cite class="typo-unique">张燕婴</cite>的《论语》，由于古文排版涉及到的元素比较多，所以采用《论语》中《学而》的第一篇作为排版实例介绍；第2个来自到经典的
+                        Lorem Ipsum，并加入了一些代码和列表等比较具有代表性的排版元素。</p>
+
+                    <h3 id="section2-1">例1：论语学而篇第一</h3>
+
+                    <p>
+                        <small><b>作者：</b><abbr title="名丘，字仲尼">孔子</abbr>（
+                            <time>前551年9月28日－前479年4月11日</time>
+                            ）
+                        </small>
+                    </p>
+
+                    <h4>本篇引语</h4>
+
+                    <p>
+                        《学而》是《论语》第一篇的篇名。《论语》中各篇一般都是以第一章的前二三个字作为该篇的篇名。《学而》一篇包括16章，内容涉及诸多方面。其中重点是「吾日三省吾身」；「节用而爱人，使民以时」；「礼之用，和为贵」以及仁、孝、信等道德范畴。 </p>
+
+                    <h4>原文</h4>
+
+                    <p>子曰：「学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？」 </p>
+
+                    <h4>译文</h4>
+
+                    <p>孔子说：「学了又时常温习和练习，不是很愉快吗？有志同道合的人从远方来，不是很令人高兴的吗？人家不了解我，我也不怨恨、恼怒，不也是一个有德的君子吗？」 </p>
+
+                    <h4>评析</h4>
+
+                    <p>宋代著名学者<u class="typo-u">朱熹</u>对此章评价极高，说它是「入道之门，积德之基」。本章这三句话是人们非常熟悉的。历来的解释都是：学了以后，又时常温习和练习，不也高兴吗等等。三句话，一句一个意思，前后句子也没有什么连贯性。但也有人认为这样解释不符合原义，指出这里的「学」不是指学习，而是指学说或主张；「时」不能解为时常，而是时代或社会的意思，「习」不是温习，而是使用，引申为采用。而且，这三句话不是孤立的，而是前后相互连贯的。这三句的意思是：自己的学说，要是被社会采用了，那就太高兴了；退一步说，要是没有被社会所采用，可是很多朋友赞同<abbr
+                            title="张燕婴">我</abbr>的学说，纷纷到我这里来讨论问题，我也感到快乐；再退一步说，即使社会不采用，人们也不理解我，我也不怨恨，这样做，不也就是君子吗？（见《齐鲁学刊》1986年第6期文）这种解释可以自圆其说，而且也有一定的道理，供读者在理解本章内容时参考。
+                    </p>
+
+                    <p>此外，在对「人不知，而不愠」一句的解释中，也有人认为，「人不知」的后面没有宾语，人家不知道什么呢？当时因为孔子有说话的特定环境，他不需要说出知道什么，别人就可以理解了，却给后人留下一个谜。有人说，这一句是接上一句说的，从远方来的朋友向我求教，我告诉他，他还不懂，我却不怨恨。这样，「人不知」就是「人家不知道我所讲述的」了。这样的解释似乎有些牵强。</p>
+
+                    <p>总之，本章提出以学习为乐事，做到人不知而不愠，反映出孔子学而不厌、诲人不倦、注重修养、严格要求自己的主张。这些思想主张在《论语》书中多处可见，有助于对第一章内容的深入了解。</p>
+
+                    <h3 id="section2-2">例2：英文排版</h3>
+
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                        type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                        passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
+                        Ipsum.</p>
+                    <blockquote>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </blockquote>
+
+                    <h4>The standard Lorem Ipsum passage, used since the 1500s</h4>
+
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+
+                    <h4>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</h4>
+
+                    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+                        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+                        voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                        velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim
+                        ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
+                        consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
+                        vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+
+                    <h4>List style in action</h4>
+                    <ul>
+                        <li>If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as
+                            your brother and hope as your sentry.
+                            <p>如果你希望成功，当以恒心为良友，以经验为参谋，以谨慎为兄弟，以希望为哨兵。</p>
+                        </li>
+                        <li>Sometimes one pays most for the things one gets for nothing.
+                            <p>有时候一个人为不花钱得到的东西付出的代价最高。</p>
+                        </li>
+                        <li>Only those who have the patience to do simple things perfectly ever acquire the skill to do difficult things
+                            easily.
+                            <p>只有有耐心圆满完成简单工作的人，才能够轻而易举的完成困难的事。</p>
+                        </li>
+                    </ul>
+
+                    <h4>You may want to create a perfect <code>&lt;hr /&gt;</code> line, despite the fact that there will never have one
+                    </h4>
+                    <hr/>
+                    <p><abbr title="法国作家罗切福考尔德">La Racheforcauld</abbr> said:
+                        <mark>"Few things are impossible in themselves; and it is often for want of will, rather than of means, that man fails
+                            to succeed".
+                        </mark>
+                        You just need to follow the browser's behavior, and set a right <code>margin</code> to it。it will works nice as the
+                        demo you're watching now. The following code is the best way to render typo in Chinese:
+                    </p>
+                    <pre>
+/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+h1,h2,h3,h4,h5,h6 {
+    line-height:1;font-family:Arial,sans-serif;margin:1.4em 0 0.8em;
+}
+h1{font-size:1.8em;}
+h2{font-size:1.6em;}
+h3{font-size:1.4em;}
+h4{font-size:1.2em;}
+h5,h6{font-size:1em;}
+
+/* 现代排版：保证块/段落之间的空白隔行 */
+.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr {
+    margin:1em 0 0.6em;
+}
+</pre>
+
+                </div>
+                <!--标签-->
+                <div class="m-padded-lr-responsive">
+                    <div class="ui basic teal right pointing label">生活日记</div>
+                </div>
+                <!--赞赏-->
+                <div class="ui center aligned basic segment">
+                    <button id="payButton" class="ui orange basic circular button">赞赏</button>
+                </div>
+                <div class="ui payQ flowing popup transition hidden" >
+                    <div class="ui orange basic label">
+                        <div class="ui images " style="font-size: inherit">
+                            <div class="image">
+                                <img src="../static/images/WeChat.jpg" alt="image" class="ui rounded bordered image" style="width: 120px" th:src="@{/images/WeChat.jpg}">
+                                <div>支付宝</div>
+                            </div>
+                            <div class="image">
+                                <img src="../static/images/WeChat.jpg" alt="image" class="ui rounded bordered image" style="width: 120px" th:src="@{/images/WeChat.jpg}">
+                                <div>微信</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--end of 内容区域-->
+
+            <!--博客信息-->
+            <div class="ui  attached positive message">
+               <div class="ui grid">
+                   <div class="thirteen wide middle aligned column">
+                        <ui class="list">
+                            <li>作者：林茂胜</li>
+                            <li>发表时间：2019年8月18日</li>
+                            <li>版权声明：转载请注明出处和作者</li>
+                        </ui>
+                   </div>
+                   <div class="three wide column">
+                       <img src="../static/images/WeChat.jpg" alt="image" class="ui rounded bordered image" style="width: 110px" th:src="@{/images/WeChat.jpg}">
+                   </div>
+               </div>
+            </div>
+
+            <!--留言区域-->
+            <div class="ui bottom attached segment">
+                <div class="ui teal segment" id="comment-container">
+                    <div th:fragment="commentList">
+                        <div class="ui threaded comments">
+                            <h3 class="ui dividing header">Comments</h3>
+                            <div class="comment" th:each="comment : ${comments}">
+                                <a class="avatar">
+                                    <img src="../static/images/p2.jpg" th:src="@{${comment.avatar}}">
+                                </a>
+                                <div class="content">
+                                    <a class="author" th:text="${comment.nickname}">Matt</a>
+                                    <div class="metadata">
+                                        <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+                                    </div>
+                                    <div class="text" th:text="${comment.content}">
+                                        How artistic!
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply" data-commentid="1" data-commentnickname="Matt" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}" onclick="reply(this)">Reply</a>
+                                    </div>
+                                </div>
+                                <!--第二层子评论-->
+                                <div class="comments" th:if="${#arrays.length(comment.replyComments)}>0">
+                                    <div class="comment" th:each="reply : ${comment.replyComments}">
+                                        <a class="avatar">
+                                            <img src="../static/images/p2.jpg" th:src="@{${reply.avatar}}">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">
+                                                <span th:text="${reply.nickname}">Matt</span><span th:text="|@ ${reply.parentComment.nickname}|" class="m-teal">@Tom</span>
+                                            </a>
+                                            <div class="metadata">
+                                                <span class="date" th:text="${#dates.format(reply.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+                                            </div>
+                                            <div class="text" th:text="${reply.content}">
+                                                How artistic!
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply" data-commentid="1" data-commentnickname="Matt" th:attr="data-commentid=${reply.id},data-commentnickname=${reply.nickname}" onclick="reply(this)">Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/*-->
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="../static/images/p2.jpg">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Elliot Fu</a>
+                                    <div class="metadata">
+                                        <span class="date">Yesterday at 12:30AM</span>
+                                    </div>
+                                    <div class="text">
+                                        <p>This has been very useful for my research. Thanks as well!</p>
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">Reply</a>
+                                    </div>
+                                </div>
+                                <div class="comments">
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="../static/images/p2.jpg">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">Jenny Hess</a>
+                                            <div class="metadata">
+                                                <span class="date">Just now</span>
+                                            </div>
+                                            <div class="text">
+                                                Elliot you are always so right :)
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply">Reply</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="../static/images/p2.jpg">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Joe Henderson</a>
+                                    <div class="metadata">
+                                        <span class="date">5 days ago</span>
+                                    </div>
+                                    <div class="text">
+                                        Dude, this is awesome. Thanks so much
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply">Reply</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--*/-->
+
+                            <!--<form class="ui reply form">-->
+                            <!--<div class="field">-->
+                            <!--<textarea></textarea>-->
+                            <!--</div>-->
+                            <!--<div class="ui blue labeled  submit icon button ">-->
+                            <!--<img src="images/commet.svg" alt="image"style="width: 20px"> Add Reply-->
+                            <!--</div>-->
+                            <!--</form>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <input type="hidden" name="blog.id" th:value="${blog.id}">
+                    <input type="hidden" name="parentComment.id" value="-1">
+                    <div class="field">
+                        <textarea placeholder="话筒给你，编不出来打死你" name="content" >
+
+                        </textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field m-mobile-wide m-margin-tb-tiny">
+                            <input type="text" name="nickname" placeholder="留下大名">
+                        </div>
+                        <div class="field m-mobile-wide m-margin-tb-tiny">
+                            <input type="text" name="email" placeholder="留下邮箱">
+                        </div>
+                        <div class="field  m-margin-bottom-small m-mobile-wide">
+                            <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br>
+<br>
+<br>
+<!--底部footor-->
+<footer class="ui inverted vertical segment m-padded-tb">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/selfies.jpg" class="ui rounded image" alt="wechat二维码" style="width: 110px" th:src="@{/images/selfies.jpg}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">aiyo</a>
+                    <a href="#" class="item">Linsanity</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">aiyo</a>
+                    <a href="#" class="item">Linsanity</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">经典格言</h4>
+                <p>一个人最大的敌人就是自己！</p>
+            </div>
+        </div>
+        <br>
+        <div class="ui inverted secondary divider">
+        </div>
+        <p class="m-text-thin m-text-spaced m-opacity-mini">这已经是我的底线了！</p>
+    </div>
+
+
+</footer>
+<script type="text/javascript" src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/semantic-ui/2.4.2/semantic.min.js"></script>-->
+<script type="text/javascript" src="../static/js/semantic.min.js" th:src="@{/js/semantic.min.js}"></script>
+<script type="text/javascript" src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide')
+    });
+    $('#payButton').popup({
+        popup:$('.payQ.popup'),
+        on:'click',
+        position:'bottom right'
+    });
+
+    //评论表单验证
+    $('.ui.form').form({
+        fields: {
+            title: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入评论内容'
+                }
+                ]
+            },
+            content: {
+                identifier: 'nickname',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入你的大名'
+                }]
+            },
+            type: {
+                identifier: 'email',
+                rules: [{
+                    type: 'email',
+                    prompt: '请填写正确的邮箱地址'
+                }]
+            }
+        }
+    });
+
+    // $(function () {
+    //     $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
+    // });
+
+    // $(function () {
+    //     // $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
+    //     var url="/comments/"+[[${blog.id}]];
+    //     $.ajax({
+    //         url: url,
+    //         type: 'GET',
+    //         success: function () {
+    //             console.log("成功！！");
+    //         }
+    //     });
+    // });
+
+    $('#commentpost-btn').click(function () {
+        var boo=$('.ui.form').form('validate form');
+        if(boo){
+            console.log('校验成功');
+            postData()
+        }else{
+            console.log('校验失败');
+        }
+    });
+
+    function postData() {
+        $("#comment-container").load(/*[[@{/comments}]]*/"/comments",{
+            "parentComment.id" : $("[name='parentComment.id']").val(),
+            "blog.id" : $("[name='blog.id']").val(),
+            "nickname": $("[name='nickname']").val(),
+            "email"   : $("[name='email']").val(),
+            "content" : $("[name='content']").val()
+        },function (responseTxt, statusTxt, xhr) {
+//        $(window).scrollTo($('#comment-container'),500);
+            clearContent();
+        });
+    }
+
+
+    function post2() {
+        var url = '/comments/'+[[${blog.id}]];
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                "parentComment.id" : $("[name='parentComment.id']").val(),
+                "blog.id" : $("[name='blog.id']").val(),
+                "nickname": $("[name='nickname']").val(),
+                "email"   : $("[name='email']").val(),
+                "content" : $("[name='content']").val()
+            },
+            success: function (data) {
+                console.log("success");
+            }
+        })
+    }
+
+
+    function clearContent(){
+        $("[name='content']").val('');
+        $("[name='parentComment.id']").val('-1');
+        $("[name='content']").attr("placeholder","请输入评论...");
+
+    }
+
+    //回复评论功能
+    function reply(obj) {
+        var commentId=$(obj).data('commentid');//拿到data-commentid自定义属性的值
+        var commentNickame=$(obj).data('commentnickname');//驼峰命名的话拿不到属性的值
+        $("[name='content']").attr("placeholder","@"+commentNickame).focus();
+        $("[name='parentComment.id']").val(commentId);
+
+    }
+
+</script>
+</body>
+</html>

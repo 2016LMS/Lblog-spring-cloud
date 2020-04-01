@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",install-scale="1.0">
+    <title>分类管理</title>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">-->
+    <link rel="stylesheet" href="../../static/css/semantic.min.css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" href="../../static/css/me.css " th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../../static/css/icon.min.css" th:href="@{/css/icon.min.css}">
+</head>
+<body class="body-color">
+<!--导航栏-->
+<nav class="ui inverted attached segment m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu m-padded-tb-mini">
+            <h2 class="ui teal header">后台管理</h2>
+            <a href="#"class="m-item item m-mobile-hide" th:href="@{/admin/blogs}"><img src="../../static/images/Home.svg" style="display:block;width: 20px" th:src="@{/images/Home.svg}"/>博客</a>
+            <a href="#"class="active m-item item m-mobile-hide" th:href="@{/admin/types}"><img src="../../static/images/classify.svg" style="display:block;width: 20px" th:src="@{/images/classify.svg}" th:href="@{/admin/types}"/></i>分类</a>
+            <a href="#"class="m-item item m-mobile-hide" th:href="@{/admin/tags}"><img src="../../static/images/tag3.svg" style="display:block;width: 20px" th:src="@{/images/tag3.svg}" th:href="@{/admin/tags}"/>标签</a>
+            <div class="right m-item menu m-mobile-hide">
+                <div class="ui dropdown item">
+                    <div class="text">
+                        <img class="ui avatar image" src="../../static/images/p2.jpg" th:src="@{'/images/'+${session.user.avatar}}">
+                        <span th:text="${session.user.nickname}">未登录</span>
+                    </div>
+                    <div class="menu" th:if="${session.user.nickname}">     <!-- thymeleaf判断，如果nickname没有，则没登录则不显示这个menu-->
+                        <a href="#"th:href="@{/admin/logout}" class="item">注销登录</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black button m-right-top m-mobile-show"><img src="../../static/images/tealMenu.svg" style="display:block;width: 25px" th:src="@{/images/tealMenu.svg}"/></a>
+</nav>
+<div class="ui attached pointing menu">
+    <div class=" ui container">
+        <a href="#" class="item " th:href="@{/admin/types/input}">新增</a>
+        <a href="#" class="active teal item " th:href="@{/admin/types}">列表</a>
+    </div>
+
+</div>
+<!--end of navigation导航栏 -->
+<!--中间内容-->
+    <div class="m-container-small m-padded-tb-big">
+        <div class="ui container">
+
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">恭喜，操作成功</p>
+            </div>
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>名称</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="type,iterStat: ${page.content}">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${type.name}">可以联系清单</td>
+
+                    <td>
+                        <a class="ui mini teal basic button" th:href="@{/admin/types/{id}/input(id=${type.id})}">编辑</a>    <!-- {id}是占位符，id=${type.id}是为占位符中的id赋值 -->
+                        <a class="ui mini orange basic button" th:href="@{/admin/types/{id}/delete(id=${type.id})}">删除</a>
+
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="6">
+                            <div class="ui  pagination menu" th:if="${page.totalPages}>1">
+                                <a class="item" th:href="@{/admin/types(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
+                                <a class="item" th:href="@{/admin/types(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
+                            </div>
+                            <a class="ui mini teal basic right floated button" th:href="@{/admin/types/input}">新增</a>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<!--底部footor-->
+<footer class="ui inverted vertical segment m-padded-tb">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../../static/images/selfies.jpg" class="ui rounded image" alt="wechat二维码" style="width: 110px" th:src="@{/images/selfies.jpg}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">aiyo</a>
+                    <a href="#" class="item">Linsanity</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事</a>
+                    <a href="#" class="item">aiyo</a>
+                    <a href="#" class="item">Linsanity</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">经典格言</h4>
+                <p>一个人最大的敌人就是自己！</p>
+            </div>
+        </div>
+        <br>
+        <div class="ui inverted secondary divider">
+        </div>
+        <p class="m-text-thin m-text-spaced m-opacity-mini">这已经是我的底线了！</p>
+    </div>
+
+
+</footer>
+
+<script type="text/javascript" src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/semantic-ui/2.4.2/semantic.min.js"></script>-->
+<script type="text/javascript" src="../../static/js/semantic.min.js" th:src="@{/js/semantic.min.js}"></script>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide')
+    });
+
+    $('.ui.dropdown').dropdown();
+
+    //新增成功提示消息提示关闭
+    $('.message .close')
+        .on('click',function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+</script>
+</body>
+</html>

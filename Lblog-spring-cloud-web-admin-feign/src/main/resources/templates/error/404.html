@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:javascript="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+    <link type="text/css" rel="stylesheet" href="../../static/css/semantic.min.css" th:href="@{/css/semantic.min.css}">
+</head>
+<body>
+<div class="ui container" style="padding-top: 100px;padding-left: 200px">
+    <div class="image">
+        <img src="../../static/images/404.jpg" style="width: 300px">
+        <div class="ui message">
+            <div class="header">404错误： </div>
+            <p>你访问的资源不存在，请检查访问地址url再重试！</p>
+            <a href="javascript:history.go(-1)">点击返回上一页</a>
+        </div>
+    </div>
+</div>
+
+<script src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../../static/js/semantic.min.js" th:src="@{/js/semantic.min.js}"></script>
+</body>
+</html>
