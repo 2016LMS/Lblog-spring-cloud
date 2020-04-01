@@ -21,6 +21,7 @@ public class AdminController {
     public String SayHi(String message){
 //        return String.format("Hi your message is : %s port: %s ",message,port);
 //        return new User("user'name","22years");
+//        Comment comment=new Comment();
         return "redirect:/html1";
     }
 

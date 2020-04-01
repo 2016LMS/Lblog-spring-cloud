@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/Lblog-spring-cloud-service-admin/pom.xml" />
         <option value="$PROJECT_DIR$/Lblog-spring-cloud-web-admin-feign/pom.xml" />
         <option value="$PROJECT_DIR$/Lblog-spring-cloud-common/pom.xml" />
+        <option value="$PROJECT_DIR$/Lblog-spring-cloud-zuul/pom.xml" />
       </list>
     </option>
   </component>

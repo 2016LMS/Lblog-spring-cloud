@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Lblog-spring-cloud-zuul
+
+server:
+  port: 8769
+eureka:
+  client:
+    service-url:
+      defaultZone:http://localhost:8761/eureka/
+
+#zuul能聚合所有的服务消费者，统一管理这些服务消费者（feign,ribbon）的地址（ip,port），让前端页面的http请求直接由zuul网关接受
+zuul:
+  routes:
+    api-a:
+      path: /api/a/**
+      serviceId: Lblog-spring-cloud-feign
+
+

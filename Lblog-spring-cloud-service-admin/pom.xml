@@ -14,7 +14,6 @@
     <packaging>jar</packaging>
 
     <name>Lblog-spring-cloud-service-admin</name>
-    <!--<url>http://www.funtl.com</url>-->
     <inceptionYear>2020</inceptionYear>
 
     <dependencies>
@@ -24,6 +23,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <!--<scope>runtime</scope>-->
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
         <!-- Spring Boot End -->
 
         <!-- Spring Cloud Begin -->
@@ -31,7 +42,30 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark-ext-heading-anchor</artifactId>
+            <version>0.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.atlassian.commonmark</groupId>
+            <artifactId>commonmark-ext-gfm-tables</artifactId>
+            <version>0.10.0</version>
+        </dependency>
         <!-- Spring Cloud End -->
+
+        <!--<dependency>-->
+            <!--<groupId>com.lms</groupId>-->
+            <!--<artifactId>Lblog-spring-cloud-common</artifactId>-->
+            <!--<version>1.0.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

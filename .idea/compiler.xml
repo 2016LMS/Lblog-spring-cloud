@@ -10,6 +10,7 @@
         <module name="Lblog-spring-cloud-common" />
         <module name="Lblog-spring-cloud-service-admin" />
         <module name="Lblog-spring-cloud-web-admin-feign" />
+        <module name="Lblog-spring-cloud-zuul" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +19,7 @@
       <module name="Lblog-spring-cloud-dependencies" target="1.8" />
       <module name="Lblog-spring-cloud-service-admin" target="1.8" />
       <module name="Lblog-spring-cloud-web-admin-feign" target="1.8" />
+      <module name="Lblog-spring-cloud-zuul" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -25,6 +27,7 @@
       <module name="Lblog-spring-cloud-common" options="-parameters" />
       <module name="Lblog-spring-cloud-service-admin" options="-parameters" />
       <module name="Lblog-spring-cloud-web-admin-feign" options="-parameters" />
+      <module name="Lblog-spring-cloud-zuul" options="-parameters" />
       <module name="hello-spring-cloud-eureka" options="-parameters" />
     </option>
   </component>

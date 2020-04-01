@@ -6,5 +6,6 @@
     <file url="file://$PROJECT_DIR$/Lblog-spring-cloud-eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Lblog-spring-cloud-service-admin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Lblog-spring-cloud-web-admin-feign" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Lblog-spring-cloud-zuul" charset="UTF-8" />
   </component>
 </project>

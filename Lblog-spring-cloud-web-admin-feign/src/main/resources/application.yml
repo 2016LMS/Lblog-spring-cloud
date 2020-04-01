@@ -8,6 +8,15 @@ spring:
     servlet:
       content-type: text/html
 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/blog2?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password:
+
+  main:
+    allow-bean-definition-overriding: true #当遇到同样名字的时候，是否允许覆盖注册
+
 server:
   port: 8765
 

@@ -14,7 +14,6 @@
     <packaging>jar</packaging>
 
     <name>Lblog-spring-cloud-eureka</name>
-    <!--<url>http://www.funtl.com</url>-->
     <inceptionYear>2020</inceptionYear>
 
     <dependencies>
