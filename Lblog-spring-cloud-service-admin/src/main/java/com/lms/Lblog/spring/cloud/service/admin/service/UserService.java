@@ -10,4 +10,8 @@ import com.lms.Lblog.spring.cloud.service.admin.po.User;
 
 public interface UserService {
     User checkUser(String username, String password);
+
+    User getUserByname(String name);
+
+    User saveUser(User user);
 }

@@ -1,16 +1,13 @@
 package com.lms.Lblog.spring.cloud.web.admin.feign.service;
 
 import com.lms.Lblog.spring.cloud.web.admin.feign.po.Tag;
+import com.lms.Lblog.spring.cloud.web.admin.feign.vo.MyPage;
 import javassist.NotFoundException;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @FeignClient(value = "Lblog-spring-cloud-service-admin")
@@ -30,7 +27,7 @@ public interface WebTagService {
 
     //根据分页信息查询一页的记录
     @RequestMapping(value = "/admin/tags",method = RequestMethod.POST)
-    Page<Tag> listTag(Pageable pageable);
+    MyPage<Tag> listTag(MyPage page);
 
     //查询到所有的标签
     @RequestMapping(value = "/admin/tags",method = RequestMethod.GET )

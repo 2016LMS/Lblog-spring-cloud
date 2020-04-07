@@ -7,6 +7,7 @@ import com.lms.Lblog.spring.cloud.web.admin.feign.service.WebBlogService;
 import com.lms.Lblog.spring.cloud.web.admin.feign.service.WebTagService;
 import com.lms.Lblog.spring.cloud.web.admin.feign.service.WebTypeService;
 import com.lms.Lblog.spring.cloud.web.admin.feign.vo.BlogQuery;
+import com.lms.Lblog.spring.cloud.web.admin.feign.vo.MyPage;
 import com.lms.Lblog.spring.cloud.web.admin.feign.vo.PageAndBlogQuery;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,8 @@ public class BlogController {
 
         model.addAttribute("types",typeService.listType());
         PageAndBlogQuery pageAndBlogQuery=new PageAndBlogQuery();
-        pageAndBlogQuery.setPageable(pageable);
+        //pageable类没有无参构造函数，所以不能使用feign传参，当服务提供者接受到这个参数进行jackson反序列时会解析失败
+        pageAndBlogQuery.setPage(new MyPage(pageable.getPageNumber(),pageable.getPageSize()));
         pageAndBlogQuery.setBlogQuery(blog);
         model.addAttribute("page",blogService.listBlog(pageAndBlogQuery));
         return LIST;
@@ -69,7 +71,7 @@ public class BlogController {
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(size = 8,sort= {"updateTime"},direction = Sort.Direction.DESC) Pageable pageable, BlogQuery blog, Model model){
         PageAndBlogQuery pageAndBlogQuery=new PageAndBlogQuery();
-        pageAndBlogQuery.setPageable(pageable);
+        pageAndBlogQuery.setPage(new MyPage(pageable.getPageNumber(),pageable.getPageSize()));
         pageAndBlogQuery.setBlogQuery(blog);
         model.addAttribute("page",blogService.listBlog(pageAndBlogQuery));
         return "admin/adminBlogs :: blogList";

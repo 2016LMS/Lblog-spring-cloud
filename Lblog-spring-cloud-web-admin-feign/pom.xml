@@ -118,6 +118,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.lms.Lblog.spring.cloud.web.admin.feign.WebAdminFeignApplication</mainClass>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
         </plugins>

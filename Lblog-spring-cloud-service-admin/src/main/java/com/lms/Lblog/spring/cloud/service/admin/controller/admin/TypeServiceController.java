@@ -2,9 +2,12 @@ package com.lms.Lblog.spring.cloud.service.admin.controller.admin;
 
 import com.lms.Lblog.spring.cloud.service.admin.po.Type;
 import com.lms.Lblog.spring.cloud.service.admin.service.TypeService;
+import com.lms.Lblog.spring.cloud.service.admin.vo.MyPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +37,7 @@ public class TypeServiceController {
     //保存分类
     @PostMapping("/type")
     @ResponseBody
-    public Type saveType(Type type){
+    public Type saveType(@RequestBody  Type type){
         return typeService.saveType(type);
     }
 
@@ -55,8 +58,16 @@ public class TypeServiceController {
     //根据分页信息查询一页的数据
     @PostMapping("/types")
     @ResponseBody
-    public Page<Type> listTypes(Pageable pageable){
-        return typeService.listType(pageable);
+    //feign对应的服务实现上的参数@RequestBody 注解必不可少，否则接受到参数可能为null
+    public MyPage<Type> listTypes(@RequestBody MyPage page){
+        Pageable pageable =new PageRequest(page.getPageNo(),page.getPageSize());
+        Page<Type> dataPage=typeService.listType(pageable);
+        MyPage<Type> myPage=new MyPage<>();
+        myPage.setContent(dataPage.getContent());
+        myPage.setPageNo(dataPage.getNumber());
+        myPage.setPageSize(dataPage.getSize());
+        myPage.setTotal(dataPage.getTotalElements());
+        return myPage;
     }
 
     //修改分类信息

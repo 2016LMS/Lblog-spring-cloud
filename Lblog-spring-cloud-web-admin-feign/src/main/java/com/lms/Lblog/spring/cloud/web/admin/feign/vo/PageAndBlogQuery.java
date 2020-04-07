@@ -1,6 +1,5 @@
 package com.lms.Lblog.spring.cloud.web.admin.feign.vo;
 
-import org.springframework.data.domain.Pageable;
 
 /**
  * Autor Lms
@@ -8,15 +7,12 @@ import org.springframework.data.domain.Pageable;
  */
 
 public class PageAndBlogQuery {
-    private Pageable pageable;
     private BlogQuery blogQuery;
+    private MyPage mypage;
 
-    public Pageable getPageable() {
-        return pageable;
-    }
 
-    public void setPageable(Pageable pageable) {
-        this.pageable = pageable;
+    public PageAndBlogQuery() {
+
     }
 
     public BlogQuery getBlogQuery() {
@@ -26,4 +22,14 @@ public class PageAndBlogQuery {
     public void setBlogQuery(BlogQuery blogQuery) {
         this.blogQuery = blogQuery;
     }
+
+    public MyPage getPage() {
+        return mypage;
+    }
+
+    public void setPage(MyPage page) {
+        this.mypage = page;
+    }
 }
+
+

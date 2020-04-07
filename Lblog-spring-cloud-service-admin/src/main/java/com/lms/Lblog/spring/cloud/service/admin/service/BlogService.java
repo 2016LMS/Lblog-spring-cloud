@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Autor Lms
@@ -30,4 +31,8 @@ public interface BlogService {
     Blog updateBlog(Long id, Blog blog) throws NotFoundException;
 
     void deleteBlog(Long id);
+
+    Map<String,List<Blog>> arhciveBlog();
+
+    Long count();
 }

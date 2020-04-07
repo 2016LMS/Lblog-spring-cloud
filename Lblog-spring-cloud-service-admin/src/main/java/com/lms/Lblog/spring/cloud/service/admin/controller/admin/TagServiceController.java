@@ -2,10 +2,13 @@ package com.lms.Lblog.spring.cloud.service.admin.controller.admin;
 
 import com.lms.Lblog.spring.cloud.service.admin.po.Tag;
 import com.lms.Lblog.spring.cloud.service.admin.service.TagService;
+import com.lms.Lblog.spring.cloud.service.admin.vo.MyPage;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,8 +53,15 @@ public class TagServiceController {
     //根据分页信息查询一页的数据
     @PostMapping("/tags")
     @ResponseBody
-    public Page<Tag> listTypes(Pageable pageable){
-        return tagService.listTag(pageable);
+    public MyPage<Tag> listTags(MyPage page){
+        Pageable pageable =new PageRequest(page.getPageNo(),page.getPageSize());
+        Page<Tag> dataPage=tagService.listTag(pageable);
+        MyPage<Tag> myPage=new MyPage<>();
+        myPage.setContent(dataPage.getContent());
+        myPage.setPageNo(dataPage.getNumber());
+        myPage.setPageSize(dataPage.getSize());
+        myPage.setTotal(dataPage.getTotalElements());
+        return myPage;
     }
 
     //查询所有的标签

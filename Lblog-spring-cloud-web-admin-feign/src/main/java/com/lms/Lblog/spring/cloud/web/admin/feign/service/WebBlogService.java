@@ -1,18 +1,17 @@
 package com.lms.Lblog.spring.cloud.web.admin.feign.service;
 
 import com.lms.Lblog.spring.cloud.web.admin.feign.po.Blog;
-import com.lms.Lblog.spring.cloud.web.admin.feign.vo.BlogQuery;
+import com.lms.Lblog.spring.cloud.web.admin.feign.vo.MyPage;
 import com.lms.Lblog.spring.cloud.web.admin.feign.vo.PageAndBlogQuery;
 import javassist.NotFoundException;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.Map;
 
 @FeignClient(value = "Lblog-spring-cloud-service-admin")
 public interface WebBlogService {
@@ -26,15 +25,15 @@ public interface WebBlogService {
 
     //条件查询博客列表
     @RequestMapping(value = "/admin/blogsByQuery",method = RequestMethod.POST)
-    Page<Blog> listBlog(PageAndBlogQuery pageAndBlogQuery);
+    MyPage<Blog> listBlog(@RequestBody PageAndBlogQuery pageAndBlogQuery);
 
     //分页查询博客
     @RequestMapping(value = "/admin/blogs",method = RequestMethod.POST)
-    Page<Blog> listBlog(Pageable pageable);
+    MyPage<Blog> listBlog(MyPage page);
 
     //根据标签查找博客并分页
     @RequestMapping(value = "/admin/blogsByTag",method = RequestMethod.POST)
-    Page<Blog> listBlog(@RequestParam(value = "tagId") Long tagId, Pageable pageable);
+    MyPage<Blog> listBlog(@RequestParam(value = "tagId") Long tagId, MyPage page);
 
     //推荐博客按阅读量排行
     @RequestMapping(value = "/admin/recommendBlogTop",method = RequestMethod.GET)
@@ -51,4 +50,10 @@ public interface WebBlogService {
     //删除博客
     @RequestMapping(value = "/blog",method = RequestMethod.DELETE)
     void deleteBlog(Long id);
+
+    @RequestMapping(value = "/archives",method = RequestMethod.GET)
+    Map<String,List<Blog>> arhciveBlog();
+
+    @RequestMapping(value = "/count",method = RequestMethod.GET)
+    Long count();
 }

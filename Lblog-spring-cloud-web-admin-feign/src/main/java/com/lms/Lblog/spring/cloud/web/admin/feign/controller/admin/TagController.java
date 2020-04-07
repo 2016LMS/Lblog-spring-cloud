@@ -7,9 +7,9 @@ package com.lms.Lblog.spring.cloud.web.admin.feign.controller.admin;
 
 import com.lms.Lblog.spring.cloud.web.admin.feign.po.Tag;
 import com.lms.Lblog.spring.cloud.web.admin.feign.service.WebTagService;
+import com.lms.Lblog.spring.cloud.web.admin.feign.vo.MyPage;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
 
 
 @Controller
@@ -31,9 +30,12 @@ public class TagController {
     private WebTagService tagService;
 
     @GetMapping("/tags")
-    public String tags(@PageableDefault(size = 10,sort = {"id"},direction = Sort.Direction.DESC)
+    public String tags(@PageableDefault(size = 8,sort = {"id"},direction = Sort.Direction.DESC)
                                Pageable pageable, Model model) {
-        model.addAttribute("page",tagService.listTag(pageable));
+        MyPage page=new MyPage();
+        page.setPageNo(pageable.getPageNumber());
+        page.setPageSize(pageable.getPageSize());
+        model.addAttribute("page",tagService.listTag(page));
         return "admin/tags";
     }
 

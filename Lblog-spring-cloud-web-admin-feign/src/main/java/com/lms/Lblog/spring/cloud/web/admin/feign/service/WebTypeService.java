@@ -1,9 +1,8 @@
 package com.lms.Lblog.spring.cloud.web.admin.feign.service;
 
 import com.lms.Lblog.spring.cloud.web.admin.feign.po.Type;
+import com.lms.Lblog.spring.cloud.web.admin.feign.vo.MyPage;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +24,7 @@ public interface WebTypeService {
 
     //根据分页信息查询一页的记录
     @RequestMapping(value = "/admin/types",method = RequestMethod.POST)
-    Page<Type> listType(Pageable pageable);
+    MyPage<Type> listType(MyPage page);
 
 
     //修改分类

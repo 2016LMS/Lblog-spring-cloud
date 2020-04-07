@@ -59,6 +59,13 @@
             <artifactId>commonmark-ext-gfm-tables</artifactId>
             <version>0.10.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>true</scope>
+            <optional>true</optional>
+        </dependency>
         <!-- Spring Cloud End -->
 
         <!--<dependency>-->
@@ -75,6 +82,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.lms.Lblog.spring.cloud.service.admin.ServiceAdminApplication</mainClass>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
         </plugins>

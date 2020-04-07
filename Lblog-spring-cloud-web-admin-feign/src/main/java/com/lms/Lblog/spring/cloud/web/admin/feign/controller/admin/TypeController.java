@@ -3,6 +3,7 @@ package com.lms.Lblog.spring.cloud.web.admin.feign.controller.admin;
 
 import com.lms.Lblog.spring.cloud.web.admin.feign.po.Type;
 import com.lms.Lblog.spring.cloud.web.admin.feign.service.WebTypeService;
+import com.lms.Lblog.spring.cloud.web.admin.feign.vo.MyPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,7 +31,10 @@ public class TypeController {
     @GetMapping("/types")       //查询，每页显示五条数据，  通过主键ID排序， 降序排序
     public String types(@PageableDefault(size=5,sort={"id"},direction = Sort.Direction.DESC) Pageable pageable,Model model){
 
-        model.addAttribute("page",typeService.listType(pageable));
+        MyPage page=new MyPage();
+        page.setPageNo(pageable.getPageNumber());
+        page.setPageSize(pageable.getPageSize());
+        model.addAttribute("page",typeService.listType(page));
         return "admin/types";
     }
 
