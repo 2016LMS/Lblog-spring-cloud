@@ -24,3 +24,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+
+comment:
+  avatar: /images/avatars/1.jpg
+
+reply:
+  avatar: /images/avatars/2.jpg

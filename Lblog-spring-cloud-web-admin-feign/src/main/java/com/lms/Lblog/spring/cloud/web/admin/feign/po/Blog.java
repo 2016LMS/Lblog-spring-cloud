@@ -1,5 +1,7 @@
 package com.lms.Lblog.spring.cloud.web.admin.feign.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="t_blog")
+@JsonIgnoreProperties(value={"hibernateLazyInitializer"})
 public class Blog implements Serializable {
     @Id
     @GeneratedValue  //自动生成，默认为自增

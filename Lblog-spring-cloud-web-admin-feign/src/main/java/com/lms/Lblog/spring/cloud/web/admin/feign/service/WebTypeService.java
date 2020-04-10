@@ -41,7 +41,7 @@ public interface WebTypeService {
 
     //按阅读量排行查询
     @RequestMapping(value = "/admin/typesTop",method = RequestMethod.GET)
-    List<Type> listTypeTop(@RequestParam(value = "size") Integer size);
+    List<Type> listTypeTop(@RequestParam(value = "size") int size);
 
 
 }

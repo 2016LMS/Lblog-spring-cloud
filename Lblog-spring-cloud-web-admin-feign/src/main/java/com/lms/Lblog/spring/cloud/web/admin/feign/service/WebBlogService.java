@@ -18,14 +18,14 @@ public interface WebBlogService {
 
     //按照id查找博客
     @RequestMapping(value = "/admin/blog",method = RequestMethod.GET)
-    Blog getBlog(Long id);
+    Blog getBlog(@RequestParam(value = "id") Long id);
     //按照id查找到博客，并将content转化为html格式
     @RequestMapping(value = "/admin/convertBlog",method = RequestMethod.GET)
-    Blog getAndConvert(Long id) throws NotFoundException;//查询到博客，并将博客内容从markdown格式转换为html格式，因为新增博客保存的博客内容是markdown格式的
+    Blog getAndConvert(@RequestParam(value = "id") Long id) throws NotFoundException;//查询到博客，并将博客内容从markdown格式转换为html格式，因为新增博客保存的博客内容是markdown格式的
 
     //条件查询博客列表
     @RequestMapping(value = "/admin/blogsByQuery",method = RequestMethod.POST)
-    MyPage<Blog> listBlog(@RequestBody PageAndBlogQuery pageAndBlogQuery);
+    MyPage<Blog> listBlog(PageAndBlogQuery pageAndBlogQuery);
 
     //分页查询博客
     @RequestMapping(value = "/admin/blogs",method = RequestMethod.POST)
@@ -37,19 +37,19 @@ public interface WebBlogService {
 
     //推荐博客按阅读量排行
     @RequestMapping(value = "/admin/recommendBlogTop",method = RequestMethod.GET)
-    List<Blog> listRecommendBlogTop(Integer size);
+    List<Blog> listRecommendBlogTop(@RequestParam(value = "size")int size);
 
     //保存博客
-    @RequestMapping(value = "/blog", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/blog", method = RequestMethod.POST)
     Blog saveBlog(Blog blog);
 
     //修改博客内容
-    @RequestMapping(value = "/blog" ,method = RequestMethod.PUT)
+    @RequestMapping(value = "/admin/blog" ,method = RequestMethod.PUT)
     Blog updateBlog(@RequestParam(value = "id")Long id, Blog blog) throws NotFoundException;
 
     //删除博客
-    @RequestMapping(value = "/blog",method = RequestMethod.DELETE)
-    void deleteBlog(Long id);
+    @RequestMapping(value = "/admin/blog",method = RequestMethod.DELETE)
+    void deleteBlog(@RequestParam(value = "id") Long id);
 
     @RequestMapping(value = "/archives",method = RequestMethod.GET)
     Map<String,List<Blog>> arhciveBlog();

@@ -93,7 +93,7 @@ public class BlogServiceController {
     @PostMapping("/blogsByTag")
     @ResponseBody
     public MyPage<Blog> listBlog(Long tagId, MyPage myPage){
-        Pageable pageable=new PageRequest(myPage.getPageNo(),myPage.getPageSize());
+        Pageable pageable=new PageRequest(myPage.getPageNo(),myPage.getPageSize(), Sort.Direction.DESC);
         Page<Blog> dataPage = blogService.listBlog(tagId, pageable);
         MyPage<Blog> myPageResult=new MyPage<>();
         myPageResult.setContent(dataPage.getContent());
@@ -106,7 +106,7 @@ public class BlogServiceController {
     //按照阅读量排行
     @GetMapping("/recommendBlogTop")
     @ResponseBody
-    public List<Blog> listRecommendBlogTop(Integer size){
+    public List<Blog> listRecommendBlogTop(int size){
         return blogService.listRecommendBlogTop(size);
     }
 

@@ -2,9 +2,11 @@ package com.lms.Lblog.spring.cloud.service.admin.service.impl;
 
 import com.lms.Lblog.spring.cloud.service.admin.dao.CommentRepository;
 import com.lms.Lblog.spring.cloud.service.admin.po.Comment;
+import com.lms.Lblog.spring.cloud.service.admin.po.MyComment;
 import com.lms.Lblog.spring.cloud.service.admin.service.CommentService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,9 @@ public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private CommentRepository commentRepository;
+
+    @Value("${reply.avatar}")
+    private String replyAvatar;
 
     @Override
     public List<Comment> listCommentByBlogId(Long blogId) {
@@ -59,6 +64,23 @@ public class CommentServiceImpl implements CommentService {
         }
         //合并评论的各层子代到第一级子代集合中，每一个顶级评论都有一个子集合
         combineChildren(commentsView);
+
+        for (int i=0;i<commentsView.size();i++){
+            List<Comment> list = commentsView.get(i).getReplyComments();
+            List<MyComment> mylist = commentsView.get(i).getMyReplyComments();
+            MyComment myComment=null;
+            for (int j=0;j<list.size();j++){
+                //将comment实体中的replyComments属性赋值到MyReplyComment属性中
+                myComment=new MyComment();
+                myComment.setId(list.get(j).getId());
+                myComment.setAvatar(replyAvatar);
+                myComment.setCreateTime(list.get(i).getCreateTime());
+                myComment.setContent(list.get(i).getContent());
+                myComment.setParentCommentName(list.get(i).getParentComment().getNickname());
+                commentsView.get(i).getMyReplyComments().add(myComment);
+            }
+        }
+
         return commentsView;
     }
 

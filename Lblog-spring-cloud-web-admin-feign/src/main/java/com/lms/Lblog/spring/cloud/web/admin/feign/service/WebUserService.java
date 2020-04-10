@@ -17,7 +17,7 @@ public interface WebUserService {
     User checkUser(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password);
 
     @RequestMapping(value = "/userByName",method = RequestMethod.GET)
-    User getUserByname(String name);
+    User getUserByname(@RequestParam(value = "username") String name);
 
     @RequestMapping(value = "/user",method = RequestMethod.POST)
     User saveUser(User user);

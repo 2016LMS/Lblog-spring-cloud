@@ -1,5 +1,8 @@
 package com.lms.Lblog.spring.cloud.web.admin.feign.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +14,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "t_comment")
+@JsonIgnoreProperties(value={"hibernateLazyInitializer"})
 public class Comment {
     @Id
     @GeneratedValue
@@ -25,9 +29,15 @@ public class Comment {
     @ManyToOne
     private Blog blog;
 
-    //这个集合应该是自动产生的，通过mapp parentComment自动添加到list
+    //这个集合应该是自动产生的，通过map parentComment自动添加到list
+    @JsonIgnore
     @OneToMany(mappedBy = "parentComment")
     private List<Comment> replyComments = new ArrayList<>();
+
+    //这个属性用来进行json序列化的，防止无限递归，因为replyComments属性加上@jsonIgnore注解后会不被序列化，导致回复评论不能传递回去
+    //@Transient注解用于忽略hibernate的实体类映射
+    @Transient
+    private List<MyComment> myReplyComments = new ArrayList<>();
 
     @ManyToOne
     private Comment parentComment;
@@ -98,6 +108,14 @@ public class Comment {
 
     public void setReplyComments(List<Comment> replyComments) {
         this.replyComments = replyComments;
+    }
+
+    public List<MyComment> getMyReplyComments() {
+        return myReplyComments;
+    }
+
+    public void setMyReplyComments(List<MyComment> myReplyComments) {
+        this.myReplyComments = myReplyComments;
     }
 
     public Comment getParentComment() {

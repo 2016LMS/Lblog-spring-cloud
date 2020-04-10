@@ -1,6 +1,7 @@
 package com.lms.Lblog.spring.cloud.service.admin.po;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,9 +12,12 @@ import java.util.List;
 /**
  * Autor Lms
  * Time 2019/8/29/029 11:09
+ * @@JsonIgnoreProperties(value={"hibernateLazyInitializer"})就是在json序列化时忽略hibernateLazyInitializer这个属性
+ * @因为这个属性是hibernate自动添加在pojo上的
  */
 @Entity
 @Table(name="t_blog")
+@JsonIgnoreProperties(value={"hibernateLazyInitializer"})
 public class Blog implements Serializable {
     @Id
     @GeneratedValue  //自动生成，默认为自增
